@@ -40,8 +40,79 @@ fun main(args: Array<String>) {
 //    ranges()
 //    maps()
 //    allLoops()
-    allNulls()
+//    allNulls()
+//    allFunctions()
+    allLambda()
 }
+
+fun allLambda(){
+    val lambda = {
+        param:String -> println("Hi there $param") }
+    lambda("Hamza")
+
+   val max: (Int, Int) -> Int = {
+       num1, num2 ->
+       if (num1 > num2) num1 else num2
+   }
+    println(max(2,5))
+
+    val hello:() -> String = {
+        "Hello I am Hamza"
+    }
+    println(hello())
+
+    val hello2:() -> String = {
+        "Hello I am John"
+    }
+
+    val saySomething: (() -> String) -> String = {
+        passedFunction -> "Result: ${passedFunction()}"
+    }
+    println(saySomething(hello))
+    println(saySomething(hello2))
+
+    val upElseDown: (Boolean) -> () -> String = {
+            addElseSub ->
+        val increase: () -> String = {"Up vote"}
+            val decrease: () -> String = {"Down vote"}
+                if (addElseSub) increase else decrease
+            }
+
+    println("You got an ${upElseDown(false)()}")
+
+}
+fun allFunctions(){
+    println("Max of 12 and 4 is ${maxi(12, 4)}")
+
+    shoppingPoints("Burt" , "Smith")
+    shoppingPoints("Burt" , "Smith" ,  510)
+
+    walkArray(numList)
+}
+fun maxi( number1:Int , number2:Int ): Int
+{
+    return if (number1 > number2) number1 else number2
+}
+
+//Step 6: Default Parameter Values
+fun shoppingPoints(firstname: String, surname: String, points: Int = 0)
+{
+    val name_points = firstname + " " + surname + " " +
+            points.toString()
+    println(name_points)
+}
+
+val numList = listOf(1,2,3,4,5,6)
+fun walkArray(lst: List<Int>) {
+    val head = lst.firstOrNull()
+    if (head != null) {
+        val tail = lst.drop(1)
+        println(head)
+        println(tail)
+        walkArray(tail)
+    }
+}
+
 
 fun allNulls(){
 //    Step 3: toIntOrNull() returns an optional
@@ -96,8 +167,6 @@ fun allNulls(){
         if (it != null) {print("the string $it was returned")}
         else { print("null returned") }
     }
-
-
 }
 fun allLoops(){
 //    Step 3: for loops
