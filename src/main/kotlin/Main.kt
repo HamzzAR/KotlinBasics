@@ -42,7 +42,41 @@ fun main(args: Array<String>) {
 //    allLoops()
 //    allNulls()
 //    allFunctions()
-    allLambda()
+//    allLambda()
+    sortedMapFilterReduce()
+}
+
+fun sortedMapFilterReduce(){
+    val letters = listOf("G" , "D" , "Z" , "A")
+    val sorted = letters.sorted()
+    println(sorted)
+    val sortAlpha = letters.sortedDescending()
+    println(sortAlpha)
+    val numbers = listOf(5, 3, 7, 8, 2, 4, 9)
+    val sortNum = numbers.sortedBy { it }
+    println(sortNum)
+
+    //Square the numbers
+    val mapNum = numbers.map{it * it}
+    println(mapNum)
+
+    // Filter out the even numbers only odd numbers remain
+    val filtNum = numbers.filter { it % 2 == 1 }
+    println(filtNum)
+
+    // add all the numbers
+    val redNum = numbers.reduce { redNum, vars -> redNum + vars }
+    println(redNum)
+
+//The zip function is a function which maps a tuple of sequences into a sequence of tu- ples.
+    val n1 = listOf(1,2,3,4,5)
+    val a1 = listOf("a","b","c","d","e")
+    val z1 = a1 zip n1
+    println(z1)    // returns "[(a, 1), (b, 2), (c, 3), (d, 4), (e, 5)]”
+    val n2 = listOf(1,2,3,4,5,6,7,8,9,10)
+    val a2 = listOf("a","b","c","d","e")
+    val z2 = a2 zip n2
+    println(z2)     //returns "[(a, 1), (b, 2), (c, 3), (d, 4), (e, 5)]"
 }
 
 fun allLambda(){
