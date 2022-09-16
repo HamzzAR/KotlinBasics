@@ -38,7 +38,117 @@ fun main(args: Array<String>) {
 //    allAboutLists()
 //    allAboutSets()
 //    ranges()
-    maps()
+//    maps()
+//    allLoops()
+    allNulls()
+}
+
+fun allNulls(){
+//    Step 3: toIntOrNull() returns an optional
+    val aString = "999"
+    val anInt = aString.toIntOrNull()
+    println(anInt)
+    val aString1 = "A999"
+    val anInt1 = aString1.toIntOrNull()
+    println(anInt1)
+
+// Step 4: If Statements and Forced Unwrapping
+    val place:Int? = null
+    if (place != null){
+        println(place)
+    }else{
+        println("Contains null")
+    }
+
+//  Step 5: Defining your own optional
+    val place1:Int?
+    place1 = null
+
+//    Step 6: Using a when statement
+    when (place1) {
+        1 ->  println("You won a Gold medal")
+        2 ->  println("You won a Silver medal")
+        3 ->  println("You won a Bronze medal")
+        null -> println("Didn't finish")
+        else ->  println("Also ran")
+    }
+
+//Step 7: Nil coalescing ??
+    val opVar:Int? = null
+    println(opVar)
+    println(opVar ?:0)
+
+    val addedOp = 1 + (opVar ?: 0)  // returns 1
+    println(addedOp)
+
+// Step 8: safely dealing with an empty collection and Null returns
+    val numList = listOf(1,2,3,4,5,6)
+    println(numList.first())  // returns 1
+    println(numList.last())  // returns 6
+    val empty = listOf<Int>()
+    println(empty.firstOrNull())  // returns null
+    println(empty.lastOrNull())  // returns null
+    println(empty.firstOrNull()?.equals(1))   // returns null
+    println(numList.firstOrNull()?.equals(1)) // returns true
+
+    var str: String? = "Hello"
+    str.let {
+        if (it != null) {print("the string $it was returned")}
+        else { print("null returned") }
+    }
+
+
+}
+fun allLoops(){
+//    Step 3: for loops
+    for  (index in 1..5)  {
+        println("This is number $index")
+    }
+    val names = listOf("The Doctor", "Dalek Khan", "The Master")
+    for  (aName in names)  {
+        println("Are you $aName ?")
+    }
+    val shoppingPoints =  mapOf("The Doctor" to 74 , "Davros" to 55 , "The Master" to 40)
+    for  ((name, points) in shoppingPoints)  {
+        println("$name has $points points")
+    }
+    for  (character  in "abcdefghijklmnopqrstuvwxyz1234567890")
+    {
+        println(character)
+    }
+
+//    Step 4: while loops
+    var turns = 1
+    while (turns <= 3) {
+        println("This is turn number $turns")
+        turns += 1 }
+
+    var gotTurnsLeft = true;
+    while (gotTurnsLeft) {
+        turns -= 1
+        if (turns == 0) {
+            gotTurnsLeft = false
+        }
+        println("got another turn")
+    }
+
+//    Step 5: do while loops
+    var counter = 0
+    do {
+        counter += 1
+    } while (counter < 5)
+
+//    Step 6: Break
+    for  (counter in -5..5)
+    {
+        println("This $counter")
+        if (counter == 0) {
+            break }
+    }
+//  Step 7: Using downTo and step in a for loop
+    for (index in 10 downTo 0 step 2) {
+        println("This is number $index")
+    }
 }
 
 fun maps(){
